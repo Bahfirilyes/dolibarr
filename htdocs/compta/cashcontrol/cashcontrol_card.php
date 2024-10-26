@@ -462,6 +462,8 @@ if ($action == "create" || $action == "start" || $action == 'close') {
 		$retstring .= "</select>";
 		print $retstring;
 		print '</td>';
+
+
 		// Button Start
 		print '<td>';
 		if ($action == 'start' && GETPOST('posnumber') != '' && GETPOST('posnumber') != '' && GETPOST('posnumber') != '-1') {
@@ -602,6 +604,9 @@ if ($action == "create" || $action == "start" || $action == 'close') {
 if (empty($action) || $action == "view" || $action == "close") {
 	$result = $object->fetch($id);
 
+	// fetch optionals attributes and labels
+	$extrafields->fetch_name_optionals_label($object->table_element);
+
 	if ($result <= 0) {
 		print $langs->trans("ErrorRecordNotFound");
 	} else {
@@ -642,6 +647,13 @@ if (empty($action) || $action == "view" || $action == "close") {
 		print '<tr><td class="nowrap">';
 		print $langs->trans("Period");
 		print '</td><td>';
+
+
+		// Other attributes
+		$cols = 2;
+		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
+
+
 		print $object->year_close;
 		print($object->month_close ? "-" : "").$object->month_close;
 		print($object->day_close ? "-" : "").$object->day_close;
@@ -676,6 +688,8 @@ if (empty($action) || $action == "view" || $action == "close") {
 		print '<div class="clearboth"></div>';
 
 		print dol_get_fiche_end();
+		$parameters = array();
+		$reshook = $hookmanager->executeHooks('addMoreActionsButtons', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
 
 		if ($action != 'close') {
 			print '<div class="tabsAction">';
