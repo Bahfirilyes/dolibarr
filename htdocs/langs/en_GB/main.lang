@@ -40,3 +40,5 @@ Color=Colour
 NoPhotoYet=No picture available yet
 SearchIntoSupplierProposals=Vendor quotes
 Terminate=Deactivate
+
+CashpointAlredyClosed = Cash point %s already closed

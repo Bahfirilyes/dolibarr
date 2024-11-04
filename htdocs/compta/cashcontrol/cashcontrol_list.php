@@ -379,6 +379,9 @@ $param .= $hookmanager->resPrint;
 $arrayofmassactions = array();
 if (!empty($permissiontodelete)) {
 	$arrayofmassactions['predelete'] = img_picto('', 'delete', 'class="pictofixedwidth"').$langs->trans("Delete");
+ }
+if (!empty($permissiontoadd)){
+	$arrayofmassactions['preclose'] = img_picto('', 'close', 'class="pictofixedwidth"').$langs->trans("Close");
 }
 $massactionbutton = $form->selectMassAction('', $arrayofmassactions);
 
