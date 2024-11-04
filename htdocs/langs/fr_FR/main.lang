@@ -1308,3 +1308,5 @@ SignedStatus=Statut signature
 NbRecordQualified=Nombre d'enregistrements qualifiés
 auto=auto
 CashpointAlredyClosed= Contrôle de caisse %s est déja clôturé
+ConfirmMassClosing= Confirmation de la clôture de masse
+ConfirmMassClosingQuestion = Etes-vous sûr de vouloir clôturé le(s) %s enregistrement(s) sélectionné(s) ?
