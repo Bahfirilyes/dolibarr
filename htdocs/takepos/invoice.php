@@ -1280,8 +1280,9 @@ if (empty($reshook)) {
 			$sectionwithinvoicelink .= '<script type="text/javascript">$("#buttonprint").click();</script>';
 		}
 	}
+}else {
+	$sectionwithinvoicelink=$hookmanager->resPrint;
 }
-
 
 /*
  * View
