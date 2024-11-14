@@ -613,7 +613,6 @@ function CloseBill() {
 		echo "return; } \n";
 	}
 	?>
-	debugger;
 	invoiceid = $("#invoiceid").val();
 	console.log("Open popup to enter payment on invoiceid="+invoiceid);
 	<?php if (getDolGlobalInt("TAKEPOS_NO_GENERIC_THIRDPARTY")) { ?>
