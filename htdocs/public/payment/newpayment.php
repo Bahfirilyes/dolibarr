@@ -226,6 +226,16 @@ $urlwithroot = DOL_MAIN_URL_ROOT; // This is to use same domain name than curren
 $urlok = $urlwithroot.'/public/payment/paymentok.php?';
 $urlko = $urlwithroot.'/public/payment/paymentko.php?';
 
+/*
+if ($ws) {
+	include_once DOL_DOCUMENT_ROOT.'/website/class/website.class.php';
+	$tmpwebsite = new WebSite($db);
+	$tmpwebsite->fetch(0, $ws);
+	$urlok = $tmpwebsite->virtualhost.'/public/payment/paymentok.php?';
+	$urlko = $tmpwebsite->virtualhost.'/public/payment/paymentko.php?';
+}
+*/
+
 // Complete urls for post treatment
 $ref = $REF = GETPOST('ref', 'alpha');
 $TAG = GETPOST("tag", 'alpha');
@@ -662,8 +672,7 @@ if ($action == 'charge' && isModEnabled('stripe')) {	// Test on permission not r
 
 				// Create the VAT record in Stripe
 				/* We don't know country of customer, so we can't create tax
-				if (!empty($conf->global->STRIPE_SAVE_TAX_IDS))	// We setup to save Tax info on Stripe side. Warning: This may result in error when saving customer
-				{
+				if (getDolGlobalString('STRIPE_SAVE_TAX_IDS')) {	// We setup to save Tax info on Stripe side. Warning: This may result in error when saving customer
 					if (!empty($vatcleaned))
 					{
 						$isineec=isInEEC($object);
